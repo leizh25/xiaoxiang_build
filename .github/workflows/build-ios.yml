@@ -42,8 +42,8 @@ jobs:
       - name: Build iOS app
         run: |
           cd ios
-          xcodebuild clean -workspace xiaoxiang.xcworkspace -scheme xiaoxiang -configuration Release -sdk iphoneos
-          xcodebuild archive -workspace xiaoxiang.xcworkspace -scheme xiaoxiang -configuration Release -sdk iphoneos -archivePath $PWD/build/xiaoxiang.xcarchive
+          xcodebuild -workspace xiaoxiang.xcworkspace -scheme xiaoxiang -sdk iphoneos -configuration Release archive -archivePath $PWD/build/xiaoxiang.xcarchive
+        #   xcodebuild archive -workspace xiaoxiang.xcworkspace -scheme xiaoxiang -configuration Release -sdk iphoneos -archivePath $PWD/build/xiaoxiang.xcarchive
           
       - name: Export .ipa
         run: |
