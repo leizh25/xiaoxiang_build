@@ -1,0 +1,52 @@
+name: Build iOS App
+
+on:
+  push:
+    branches:
+      - main  # 或任何您想监听的分支
+  pull_request:
+    branches:
+      - main  # 或任何您想监听的分支
+
+jobs:
+  build:
+    runs-on: macos-latest  # 使用 macOS 执行构建
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          cd ios && pod install && cd ..
+
+      - name: Set up certificate and provisioning profile
+        run: |
+          echo "$IOS_CERTIFICATE" | base64 -d > /tmp/certificate.p12
+          security create-keychain -p "" build.keychain
+          security import /tmp/certificate.p12 -k build.keychain -P "$CERT_PASSWORD" -T /usr/bin/codesign
+          security set-keychain-settings -t 3600 -u build.keychain
+          echo "$IOS_PROVISION_PROFILE" | base64 -d > /tmp/provision.mobileprovision
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          mv /tmp/provision.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+
+      - name: Build iOS app
+        run: |
+          cd ios
+          xcodebuild clean -workspace xiaoxiang.xcworkspace -scheme xiaoxiang -configuration Release -sdk iphoneos
+          xcodebuild archive -workspace xiaoxiang.xcworkspace -scheme xiaoxiang -configuration Release -sdk iphoneos -archivePath $PWD/build/xiaoxiang.xcarchive
+          
+      - name: Export .ipa
+        run: |
+          xcodebuild -exportArchive -archivePath $PWD/build/xiaoxiang.xcarchive -exportPath $PWD/build -exportOptionsPlist ./ios/xiaoxiang/ExportOptions.plist
+
+      - name: Upload .ipa to Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-ipa
+          path: build/xiaoxiang.ipa

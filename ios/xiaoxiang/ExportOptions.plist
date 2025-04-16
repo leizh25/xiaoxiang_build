@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+  <dict>
+    <key>method</key>
+    <string>development</string>  <!-- 使用开发证书 -->
+    <key>teamID</key>
+    <string>B5C39263N2</string>
+    <key>destination</key>
+    <string>export</string>
+    <key>provisioningProfiles</key>
+    <dict>
+      <key>io.enexer.com</key> <!-- 你的应用包名 -->
+      <string>iOS Development: enexerProfile</string> <!-- 使用正确的描述文件名称 -->
+    </dict>
+  </dict>
+</plist>
