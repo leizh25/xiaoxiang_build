@@ -26,12 +26,16 @@ jobs:
           cd ios && pod install && cd ..
 
       - name: Set up certificate and provisioning profile
+        env:
+            IOS_CERTIFICATE: ${{ secrets.IOS_CERTIFICATE }}
+            IOS_PROVISION_PROFILE: ${{ secrets.IOS_PROVISION_PROFILE }}
+            CERT_PASSWORD: ${{ secrets.CERT_PASSWORD }}
         run: |
-          echo "$IOS_CERTIFICATE" | base64 -d > /tmp/certificate.p12
+          echo $IOS_CERTIFICATE | base64 -d > /tmp/certificate.p12
           security create-keychain -p "" build.keychain
-          security import /tmp/certificate.p12 -k build.keychain -P "$CERT_PASSWORD" -T /usr/bin/codesign
+          security import /tmp/certificate.p12 -k build.keychain -P $CERT_PASSWORD -T /usr/bin/codesign
           security set-keychain-settings -t 3600 -u build.keychain
-          echo "$IOS_PROVISION_PROFILE" | base64 -d > /tmp/provision.mobileprovision
+          echo $IOS_PROVISION_PROFILE | base64 -d > /tmp/provision.mobileprovision
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           mv /tmp/provision.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
