@@ -10,11 +10,11 @@ jobs:
  
     steps:
     - name: Checkout 
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
  
     # 环境设置 
     - name: Setup Node 
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '22'
  
@@ -62,7 +62,7 @@ jobs:
  
     # 上传产物 
     - name: Upload IPA 
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: app.ipa  
         path: ios/build/xiaoxiang.ipa  
