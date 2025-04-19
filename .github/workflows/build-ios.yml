@@ -48,9 +48,6 @@ jobs:
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
         mv enexerProfile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
  
-    # 生成jsbundle 
-   # - name: Generate JS Bundle 
-    #  run: npm run bundle-ios 
  
     # Xcode打包 
     - name: Build and Export IPA 
@@ -66,7 +63,7 @@ jobs:
         xcodebuild -exportArchive \
           -archivePath build/xiaoxiang.xcarchive  \
           -exportPath build \
-          -exportOptionsPlist ExportOptions.plist  
+          -exportOptionsPlist ./ios/ExportOptions.plist  
  
     # 上传产物 
     - name: Upload IPA 

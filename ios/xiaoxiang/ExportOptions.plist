@@ -7,5 +7,12 @@
     <string>B5C39263N2</string>
     <key>uploadBitcode</key>
     <false/>
+    <key>signingStyle</key>
+    <string>manual</string>
+    <key>provisioningProfiles</key>
+    <dict>
+      <key>io.enexer.com</key> <!-- 用您的 App 的 bundle identifier 替换 -->
+      <string>enexerProfile</string> <!-- 用您的 Provisioning Profile 的名称替换 -->
+    </dict>
 </dict>
 </plist>
