@@ -53,7 +53,7 @@ jobs:
         cd ios 
         xcodebuild archive \
           -workspace xiaoxiang.xcworkspace  \
-          -scheme YourScheme \
+          -scheme xiaoxiang \
           -archivePath build/xiaoxiang.xcarchive  
           
         xcodebuild -exportArchive \
