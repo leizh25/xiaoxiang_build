@@ -2,11 +2,11 @@
 <plist version="1.0">
 <dict>
     <key>method</key>
-    <string>development</string>
+    <string>Development</string>
     <key>teamID</key>
     <string>B5C39263N2</string>
-    <key>uploadBitcode</key>
-    <false/>
+    <!-- <key>uploadBitcode</key>
+    <false/> -->
     <key>signingStyle</key>
     <string>manual</string>
     <key>provisioningProfiles</key>

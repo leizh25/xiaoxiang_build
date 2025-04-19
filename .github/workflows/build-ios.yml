@@ -50,7 +50,7 @@ jobs:
  
  
     # Xcode打包 
-    - name: Build and Export IPA 
+    - name: Build IPA 
       run: |
         cd ios 
         xcodebuild archive \
@@ -59,7 +59,10 @@ jobs:
           -configuration Release \
           -sdk iphonesimulator \
           -archivePath build/xiaoxiang.xcarchive  
-          
+
+    - name: Export IPA 
+      run: |
+        cd ios 
         xcodebuild -exportArchive \
           -archivePath build/xiaoxiang.xcarchive  \
           -exportPath build \
