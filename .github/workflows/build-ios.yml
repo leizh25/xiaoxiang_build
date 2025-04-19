@@ -59,6 +59,8 @@ jobs:
         xcodebuild archive \
           -workspace xiaoxiang.xcworkspace  \
           -scheme xiaoxiang \
+          -configuration Release \
+          -sdk iphonesimulator \
           -archivePath build/xiaoxiang.xcarchive  
           
         xcodebuild -exportArchive \
