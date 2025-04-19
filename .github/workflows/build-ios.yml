@@ -37,10 +37,17 @@ jobs:
         echo $PROVISION_BASE64 | base64 --decode > profile.mobileprovision  
         
         # 创建钥匙串并导入证书 
-        security create-keychain -p "$KEYCHAIN_PASS" build.keychain  
-        security import cert.p12 -k build.keychain  -P "$P12_PASSWORD" -T /usr/bin/codesign 
-        security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASS" build.keychain  
-        security default-keychain -s build.keychain  
+        #security create-keychain -p "$KEYCHAIN_PASS" build.keychain  
+        #security import cert.p12 -k build.keychain  -P "$P12_PASSWORD" -T /usr/bin/codesign 
+        #security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASS" build.keychain  
+        #security default-keychain -s build.keychain  
+
+        #echo "$CERT_CONTENT" | base64 -D > certificate.p12
+        security create-keychain -p "$P12_PASSWORD" build.keychain
+        security import certificate.p12 -k build.keychain -P "$P12_PASSWORD" -T /usr/bin/codesign
+        security list-keychains -s build.keychain
+        security default-keychain -s build.keychain
+        security unlock-keychain -p "$P12_PASSWORD" build.keychain
  
     # 生成jsbundle 
    # - name: Generate JS Bundle 
