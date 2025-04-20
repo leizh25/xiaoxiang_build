@@ -2,7 +2,7 @@
 <plist version="1.0">
 <dict>
     <key>method</key>
-    <string>ad-hoc</string>
+    <string>debugging</string>
     <key>teamID</key>
     <string>B5C39263N2</string>
     <key>uploadBitcode</key>
