@@ -50,39 +50,42 @@ jobs:
  
  
     # Xcode打包 
-    # - name: Build IPA 
-    #   run: |
-    #     cd ios 
-    #     xcodebuild archive \
-    #       -workspace xiaoxiang.xcworkspace  \
-    #       -scheme xiaoxiang \
-    #       -configuration Release \
-    #       -sdk iphonesimulator \
-    #       -archivePath build/xiaoxiang.xcarchive  
+    - name: Build IPA 
+      run: |
+        cd ios 
+        xcodebuild archive \
+          -workspace xiaoxiang.xcworkspace  \
+          -scheme xiaoxiang \
+          -configuration Release \
+          -sdk iphonesimulator \
+          -archivePath build/xiaoxiang.xcarchive  
              
     # 上传xcarchive 
-    # - name: Upload xcarchive 
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: xiaoxiang.xcarchive  
-    #     path: ios/build/xiaoxiang.xcarchive  
+    - name: Upload xcarchive 
+      uses: actions/upload-artifact@v4
+      with:
+        name: xiaoxiang.xcarchive  
+        path: ios/build/xiaoxiang.xcarchive  
 
-    - name: Unzip xcarchive
-      run: |
-        cd ios/xiaoxiang.xcarchive
-        unzip xiaoxiang.xcarchive.zip
-        pwd
-        ls -l
+    # - name: Unzip xcarchive
+    #   run: |
+    #     cd ios/xiaoxiang.xcarchive
+    #     unzip xiaoxiang.xcarchive.zip
+    #     pwd
+    #     ls -l
 
 
     - name: Export IPA 
       run: |
         cd ios 
         xcodebuild -exportArchive \
-          -archivePath xiaoxiang.xcarchive  \
+          -archivePath build/xiaoxiang.xcarchive  \
           -exportPath build \
           -exportOptionsPlist xiaoxiang/ExportOptions.plist  
- 
+        echo '查看文件夹'
+        ls -l
+
+
     # 上传IPA 
     - name: Upload IPA 
       uses: actions/upload-artifact@v4
