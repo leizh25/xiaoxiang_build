@@ -64,8 +64,8 @@ jobs:
           -workspace xiaoxiang.xcworkspace  \
           -scheme xiaoxiang \
           -configuration Release \
-          -sdk iphonesimulator \
-          -destination iphoneos18.2 \
+          -sdk iphoneos18.2 \
+          -destination generic/platorm=iOS \
           -archivePath build/xiaoxiang.xcarchive  
 
           #-sdk iphoneos18.2
