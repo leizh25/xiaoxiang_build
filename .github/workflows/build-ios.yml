@@ -64,8 +64,8 @@ jobs:
           -workspace xiaoxiang.xcworkspace  \
           -scheme xiaoxiang \
           -configuration Release \
-          -sdk iphoneos18.2 \
-          -destination generic/platform=iOS \
+          #-sdk iphoneos18.2 \
+          #-destination generic/platform=iOS \
           -archivePath build/xiaoxiang.xcarchive  
 
           #-sdk iphoneos18.2
