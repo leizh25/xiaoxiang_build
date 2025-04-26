@@ -15,7 +15,7 @@ jobs:
     # Xcode打包 
     - name: Build IPA 
       run: |
-        cd ios 
+        # cd ios 
         xcodebuild -showsdks -json
         # xcodebuild -workspace Runner.xcworkspace -scheme Runner -destination 'platform=iOS Simulator,OS=16.2,name=iPhone 14' archive -archivePath Runner.xcarchive
         # xcodebuild -exportArchive -archivePath Runner.xcarchive -exportPath Runner.ipa -exportOptionsPlist exportOptions.plist
