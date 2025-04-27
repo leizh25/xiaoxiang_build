@@ -64,10 +64,10 @@ jobs:
           -workspace xiaoxiang.xcworkspace  \
           -scheme xiaoxiang \
           -configuration Release \
-          -sdk /Applications/Xcode_16.2.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.2.sdk \
+          -sdk iphoneos18.2 \
           -archivePath build/xiaoxiang.xcarchive  
-
-    #-sdk iphoneos18.2
+          
+    # -sdk /Applications/Xcode_16.2.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.2.sdk \
     # -destination generic/platform=iOS \
     # -sdk iphonesimulator \
 
