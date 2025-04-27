@@ -64,18 +64,11 @@ jobs:
           -workspace xiaoxiang.xcworkspace  \
           -scheme xiaoxiang \
           -configuration Release \
-          -sdk iphoneos18.2 \
+          -sdk iphonesimulator \
+          -destination generic/platform=iOS \
           -archivePath build/xiaoxiang.xcarchive  
 
-
-      #====改版
-
-      # xcodebuild archive \
-      #   -workspace xiaoxiang.xcworkspace  \
-      #   -scheme xiaoxiang \
-      #   -configuration Release \
-      #   -sdk iphoneos18.2 \
-      #   -archivePath build/xiaoxiang.xcarchive 
+    #-sdk iphoneos18.2
              
     # 上传xcarchive 
     - name: Upload xcarchive 
